@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>FRAX-BUD CRM</title>
+</head>
+<body>
+    <h3>Podaj dane do logowania:</h3>
+    <form action="loginform" th:action="@{/login}" method="post">
+        <table border="0">
+            <tr><td>Użytkownik</td><td>:</td><td><input type="text" name="username" placeholder="Nazwa konta" size="20"></td></tr>
+            <tr><td>Hasło</td><td>:</td><td><input type="password" name="password" placeholder="Hasło" size="20"></td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td><input type="image" value="Login" src="images/zaloguj.png" alt="zaloguj"></td></tr>
+        </table>
+    </form>
+</body>
+</html>

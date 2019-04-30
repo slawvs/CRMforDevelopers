@@ -1,0 +1,20 @@
+  #userTable {
+    width: 99%;
+    margin: 10px;
+    font-family:Verdana;
+    background-color: #FFFFFF;
+  }
+  #userTable th {
+    padding:2px;
+    font-size: 10pt;
+    height:30px;
+    background-color: #ff1414;
+  }
+  #userTable td {
+    padding: 2px;
+    font-size: 10pt;
+  }
+
+.pierwszy th, .drugi td {
+  background: #e8e8e8;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="Stylesheet" type="text/css" href="style/styleTable.css">
+<title>Dokumenty</title>
+</head>
+
+<body>
+
+<form th:action="@{/logout}" method="POST">
+    <p align="right">
+    <input type="image" src="obrazy/wyloguj.png" alt="Wyloguj">
+    </p>
+</form>
+
+<p>
+<a th:href="@{/menu}"><img src="obrazy/menu.png" alt="Menu"></a>
+</p>
+
+<p><b th:text="'Zalogowany użytkownik: '+ ${currentUserName}">Zalogowany użytkownik: TestUserName</b></p>
+
+        <table class="db-table" id="userTable">
+		<tr><th>Tytuł</th><th>Opis</th><th>Plik</th></tr>
+            <tr th:class="${iterStat.odd} ? 'pierwszy' : 'drugi'" th:each="singleDoc,iterStat: ${documentsList}" th:object="${singleDoc}">
+				<td th:text="*{nazwanastronie}">Wskazówki dla klientów</td>
+				<td th:text="*{opis}">Zawiera najważniejsze wskazówki dla klientów.</td>
+				<td><a th:href="'dokumenty/' + *{nazwapliku}" href="Meterialy.pdf"><img src="obrazy/edytuj.png" alt="Pobierz"></a></td>
+            </tr>
+            
+	        <tr  class="drugi" th:remove="all">
+				<td>Cennik</td>
+				<td>Ceny wszystkich mieszkań w ofercie.</td>
+				<td><a href="Cennik.pdf"><img src="obrazy/edytuj.png" alt="Pobierz"></a></td>
+	        </tr>
+        </table>
+
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="Stylesheet" type="text/css" href="style/styleTable.css">
+<title>Menu</title>
+</head>
+
+<body>
+
+<form th:action="@{/logout}" method="POST">
+    <p align="right">
+    <input type="image" src="images/wyloguj.png" alt="Wyloguj">
+    </p>
+</form>
+
+<p>
+<a th:href="@{/main}"><img src="images/CRM.png" alt="CRM"></a>
+<a th:href="@{/documents}"><img src="images/dokumentyduze.png" alt="Dokumenty"></a>
+</p>
+
+<p><b th:text="'Zalogowany użytkownik: '+ ${currentUserName}">Zalogowany użytkownik: TestUserName</b></p>
+
+
+        <table class="db-table" id="userTable">
+		<tr><th>Tytuł</th><th>Opis</th></tr>
+            <tr th:class="${iterStat.odd} ? 'pierwszy' : 'drugi'" th:each="singleNews,iterStat: ${newsList}" th:object="${singleNews}">
+				<td th:text="*{tytul}">Ogłoszenie 1</td>
+				<td th:text="*{opis}">Dzisiaj jest piękny dzień!</td>
+            </tr>
+            
+	        <tr  class="drugi" th:remove="all">
+				<td>Ogłoszenie 2</td>
+				<td>Proszę zapiąć pasy.</td>
+	        </tr>
+        </table>
+
+</body>
+
+</html>
