@@ -8,9 +8,6 @@ import pl.slawek.service.UserService;
 
 @Controller
 public class SecurityController {
-    
-	@Autowired
-	private UserService userService;
 	
 	@GetMapping("/login")
     public String login() {

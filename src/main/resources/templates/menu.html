@@ -20,14 +20,13 @@
 <a th:href="@{/documents}"><img src="images/dokumentyduze.png" alt="Dokumenty"></a>
 </p>
 
-<p><b th:text="'Zalogowany użytkownik: '+ ${currentUserName}">Zalogowany użytkownik: TestUserName</b></p>
-
+<p sec:authorize="isAuthenticated()"><b>Zalogowany użytkownik: <span sec:authentication="name">TestUserName</span></b></p>
 
         <table class="db-table" id="userTable">
 		<tr><th>Tytuł</th><th>Opis</th></tr>
             <tr th:class="${iterStat.odd} ? 'pierwszy' : 'drugi'" th:each="singleNews,iterStat: ${newsList}" th:object="${singleNews}">
-				<td th:text="*{tytul}">Ogłoszenie 1</td>
-				<td th:text="*{opis}">Dzisiaj jest piękny dzień!</td>
+				<td th:text="*{title}">Ogłoszenie 1</td>
+				<td th:text="*{description}">Dzisiaj jest piękny dzień!</td>
             </tr>
             
 	        <tr  class="drugi" th:remove="all">

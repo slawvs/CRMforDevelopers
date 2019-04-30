@@ -11,28 +11,28 @@
 
 <form th:action="@{/logout}" method="POST">
     <p align="right">
-    <input type="image" src="obrazy/wyloguj.png" alt="Wyloguj">
+    <input type="image" src="images/wyloguj.png" alt="Wyloguj">
     </p>
 </form>
 
 <p>
-<a th:href="@{/menu}"><img src="obrazy/menu.png" alt="Menu"></a>
+<a th:href="@{/menu}"><img src="images/menu.png" alt="Menu"></a>
 </p>
 
-<p><b th:text="'Zalogowany użytkownik: '+ ${currentUserName}">Zalogowany użytkownik: TestUserName</b></p>
+<p sec:authorize="isAuthenticated()"><b>Zalogowany użytkownik: <span sec:authentication="name">TestUserName</span></b></p>
 
         <table class="db-table" id="userTable">
 		<tr><th>Tytuł</th><th>Opis</th><th>Plik</th></tr>
             <tr th:class="${iterStat.odd} ? 'pierwszy' : 'drugi'" th:each="singleDoc,iterStat: ${documentsList}" th:object="${singleDoc}">
-				<td th:text="*{nazwanastronie}">Wskazówki dla klientów</td>
-				<td th:text="*{opis}">Zawiera najważniejsze wskazówki dla klientów.</td>
-				<td><a th:href="'dokumenty/' + *{nazwapliku}" href="Meterialy.pdf"><img src="obrazy/edytuj.png" alt="Pobierz"></a></td>
+				<td th:text="*{nameOnWebPage}">Wskazówki dla klientów</td>
+				<td th:text="*{description}">Zawiera najważniejsze wskazówki dla klientów.</td>
+				<td><a th:href="'documents/' + *{fileName}" href="Meterialy.pdf"><img src="images/edytuj.png" alt="Pobierz"></a></td>
             </tr>
             
 	        <tr  class="drugi" th:remove="all">
 				<td>Cennik</td>
 				<td>Ceny wszystkich mieszkań w ofercie.</td>
-				<td><a href="Cennik.pdf"><img src="obrazy/edytuj.png" alt="Pobierz"></a></td>
+				<td><a href="Cennik.pdf"><img src="images/edytuj.png" alt="Pobierz"></a></td>
 	        </tr>
         </table>
 
